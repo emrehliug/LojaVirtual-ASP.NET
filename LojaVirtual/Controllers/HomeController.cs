@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
+
 namespace LojaVirtual.Controllers
 {
     public class HomeController : Controller
@@ -54,7 +55,7 @@ namespace LojaVirtual.Controllers
 
                 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ViewData["MSG_E"] = "Opps! Tivemos um erro, tente novamente mais tarde!";
 
