@@ -97,8 +97,24 @@ namespace LojaVirtual.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult CadastroCliente()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CadastroCliente([FromForm]Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                banco.Add(cliente);
+                banco.SaveChanges();
+
+                //TODO verificar porque não esta funcionado a mensagem de sucesso
+                TempData["MSG_S"] = "Cadastro realizado com sucesso!";
+
+                return RedirectToAction(nameof(CadastroCliente));
+            }
             return View();
         }
 
