@@ -8,16 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using LojaVirtual.Database;
+using LojaVirtual.Repositories;
 
 namespace LojaVirtual.Controllers
 {
     public class HomeController : Controller
     {
-        private LojaVirtualContext banco;
+        private IClienteRepository _repository;
 
-        public HomeController(LojaVirtualContext _banco)
+        public HomeController(IClienteRepository clienteRepository)
         {
-            banco = _banco;
+            _repository = clienteRepository;
         }
 
         [HttpGet]
@@ -31,11 +32,12 @@ namespace LojaVirtual.Controllers
         {
             if (ModelState.IsValid)
             {
+                /*
                 banco.NewsletterEmails.Add(newsletter);
                 banco.SaveChanges();
-
+                
                 TempData["MSG_S"] = "E-mail cadastrado! Agora você esta por dentro das promoções! ";
-
+                */
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -107,8 +109,7 @@ namespace LojaVirtual.Controllers
         {
             if (ModelState.IsValid)
             {
-                banco.Add(cliente);
-                banco.SaveChanges();
+                _repository.Cadastrar(cliente);
 
                 //TODO verificar porque não esta funcionado a mensagem de sucesso
                 TempData["MSG_S"] = "Cadastro realizado com sucesso!";
