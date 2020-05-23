@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using LojaVirtual.Repositories.Interfaces;
 
 namespace LojaVirtual.Repositories
 {
@@ -45,7 +46,7 @@ namespace LojaVirtual.Repositories
             return banco.Clientes.Find(Id);
         }
 
-        public List<Cliente> TodosClientes()
+        public IEnumerable<Cliente> TodosClientes()
         {
             return banco.Clientes.ToList();
         }

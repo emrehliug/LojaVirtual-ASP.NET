@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LojaVirtual.Repositories
+namespace LojaVirtual.Repositories.Interfaces
 {
     public interface IClienteRepository
     {
@@ -14,6 +14,6 @@ namespace LojaVirtual.Repositories
         void Atualizar(Cliente cliente);
         void Excluir(int Id);
         Cliente ObterCliente(int Id);
-        List<Cliente> TodosClientes();
+        IEnumerable<Cliente> TodosClientes();
     }
 }

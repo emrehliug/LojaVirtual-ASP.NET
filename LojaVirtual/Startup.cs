@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using LojaVirtual.Database;
 using Microsoft.EntityFrameworkCore;
+using LojaVirtual.Repositories.Interfaces;
 using LojaVirtual.Repositories;
 
 namespace LojaVirtual
@@ -28,13 +29,27 @@ namespace LojaVirtual
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*
+             * Padrão Repository - incluindo
+             */
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<INewsletterRepository, NewsletterRepository>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<IClienteRepository, ClienteRepository>();
+            /*
+             * Sessio - Configuration
+             */
+            services.AddMemoryCache(); // Guardar dados na memoria
+            services.AddSession(options => { 
+               
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<LojaVirtualContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Lojinha")));
 
@@ -58,6 +73,7 @@ namespace LojaVirtual
             app.UseDefaultFiles();
             app.UseStaticFiles();            
             app.UseCookiePolicy();
+            app.UseSession();
 
             /*
              * https://www.site.com.br -> Qual controlador? (Gestão) -> Rotas
