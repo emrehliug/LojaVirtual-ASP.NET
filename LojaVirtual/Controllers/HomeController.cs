@@ -94,9 +94,23 @@ namespace LojaVirtual.Controllers
             return View("Contato");
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login([FromForm]Cliente cliente)
+        {
+            if(cliente.Email == "guigui410@gmail.com" && cliente.Senha == "123456")
+            {
+                return new ContentResult() { Content = "Logado!" };
+            }
+            else
+            {
+                return new ContentResult() { Content = "Não Logado" };
+            }
         }
 
         [HttpGet]
