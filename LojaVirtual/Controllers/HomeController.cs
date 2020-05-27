@@ -106,9 +106,10 @@ namespace LojaVirtual.Controllers
         {
             if(cliente.Email == "guigui410@gmail.com" && cliente.Senha == "123456")
             {
-                HttpContext.Session.Set("ID", new byte[] { 54 });
+                HttpContext.Session.Set("ID", new byte[] { 33 });
                 HttpContext.Session.SetString("Email", cliente.Email);
                 HttpContext.Session.SetInt32("Idade", 23);
+
                 return new ContentResult() { Content = "Logado!" };
             }
             else
@@ -124,7 +125,10 @@ namespace LojaVirtual.Controllers
 
             if (HttpContext.Session.TryGetValue("ID", out UsuarioID))
             {
-                return new ContentResult() { Content = "Usuario do ID: " + UsuarioID[0] + "esta logado!" };
+                return new ContentResult() { Content = "Usuario do ID:" + UsuarioID[0] + 
+                    " Email:" + HttpContext.Session.GetString("Email") + 
+                    " Idade:" + HttpContext.Session.GetInt32("Idade") +
+                    " esta logado."};
             }
             else
             {

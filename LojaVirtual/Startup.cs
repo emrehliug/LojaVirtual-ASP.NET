@@ -49,9 +49,13 @@ namespace LojaVirtual
                
             });
 
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<LojaVirtualContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Lojinha")));
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddMvc(options => { options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "O campo deve ser preenchido!"); })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddSessionStateTempDataProvider();
+            services.AddSession(options => { options.Cookie.IsEssential = true; });
 
         }
 
