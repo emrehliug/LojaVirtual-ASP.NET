@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using LojaVirtual.Repositories.Interfaces;
 using LojaVirtual.Repositories;
 using LojaVirtual.Libraries.Sessao;
+using LojaVirtual.Libraries.Login;
 
 namespace LojaVirtual
 {
@@ -56,6 +57,7 @@ namespace LojaVirtual
 
             //Injetando a classe Sessao em qualquer elemento
             services.AddScoped<Sessao>();
+            services.AddScoped<LoginCliente>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<LojaVirtualContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Lojinha")));
