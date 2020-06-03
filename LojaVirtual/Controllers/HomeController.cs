@@ -19,12 +19,14 @@ namespace LojaVirtual.Controllers
     {
         private IClienteRepository RepositoryCliente;
         private INewsletterRepository NewsletterRepository;
+        private IColaboradorRepository ColaboradorRepository;
         private LoginCliente LoginCliente;
 
-        public HomeController(IClienteRepository clienteRepository,INewsletterRepository newsletterRepository, LoginCliente loginCliente)
+        public HomeController(IClienteRepository clienteRepository,INewsletterRepository newsletterRepository,IColaboradorRepository colaboradorRepository , LoginCliente loginCliente)
         {
             RepositoryCliente = clienteRepository;
             NewsletterRepository = newsletterRepository;
+            ColaboradorRepository = colaboradorRepository;
             LoginCliente = loginCliente;
         }
 

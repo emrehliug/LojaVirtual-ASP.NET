@@ -39,6 +39,7 @@ namespace LojaVirtual
             services.AddHttpContextAccessor();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<INewsletterRepository, NewsletterRepository>();
+            services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
