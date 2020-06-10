@@ -1,0 +1,113 @@
+[33mcommit 28c54b3dd3ad3cd6d9c9fed8b19a4ee8601fb96d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue Jun 9 15:56:17 2020 -0300
+
+    aplicando autorização para colaborador, organizando layout
+
+[33mcommit 44a24df18f60489d37bf8ea4b1b21435c1115e75[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue Jun 9 15:19:49 2020 -0300
+
+    incluindo painel do colaborador
+
+[33mcommit 411bd75b2b60293362948128eca954d54d835d6e[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue Jun 9 14:02:19 2020 -0300
+
+    trabalhando na action login da area colaborador
+
+[33mcommit 01c4b5a98e4b3e6983d91476a6f5dddce021ef93[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue Jun 9 13:21:22 2020 -0300
+
+    incluindo tela de login Colaborador
+
+[33mcommit 99989692735dfdca3168964e9639d03182a3dd91[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Wed Jun 3 12:56:25 2020 -0300
+
+    trabalhando com classe colaborador
+
+[33mcommit 7d7438d0ce355a4389bae46db3d9f23afeb029a6[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Wed Jun 3 12:20:38 2020 -0300
+
+    incluindo filtro de autorizacao para login
+
+[33mcommit 4f378f280c7154804d4250ead2d2df714bc61410[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Mon Jun 1 14:47:31 2020 -0300
+
+    finalizando parte do login do cliente
+
+[33mcommit 1f7bffb64c517e4c4a3f58e6496521f18e7e65fb[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Wed May 27 14:13:04 2020 -0300
+
+    criando classe para usar sessao
+
+[33mcommit 6f781cb2d71fe445405e34de90ad6c228aba1177[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Wed May 27 12:27:44 2020 -0300
+
+    ajustando session
+
+[33mcommit adb373b54c12758be906815c8b41b2283ebbf150[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Sat May 23 16:18:50 2020 -0300
+
+    trabalhando em acesso por sessão
+
+[33mcommit d9db6e32966d18d00b493a2ac9e46e4bc0627c98[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Sat May 23 15:30:11 2020 -0300
+
+    trabalhando na tela de login
+
+[33mcommit 4fadd9a1a94221db804047f3c0b1b7cd06d1cb3b[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Sat May 23 14:45:42 2020 -0300
+
+    incluindo repositorio cliente e session
+
+[33mcommit d1a2b56f6ce230e9c715870855e11bf3d15c9b6f[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue May 19 14:46:46 2020 -0300
+
+    incluindo repositorio no projeto
+
+[33mcommit 1bb4d80bfa2781d63632b44224a215798c9883f0[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Wed May 13 16:19:00 2020 -0300
+
+    Incluindo ViewImports, Taghelpers e ajustando cadastro de clientes
+
+[33mcommit b6b3f731d009f83c28814e7ebefca65ab9e54ec3[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue May 12 16:51:42 2020 -0300
+
+    aplicando fragment em newsletter
+
+[33mcommit da5c8c50e12fcd78844957f5938fa97e5c848fa3[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue May 12 16:16:12 2020 -0300
+
+    validando newsletter e salvando no sql server
+
+[33mcommit 39c1ef193036e1143f0bed3ed2a13ef41a020a76[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Sun May 10 12:22:59 2020 -0300
+
+    incluindo newsletter - fazendo migration newsletter
+
+[33mcommit fcc03591503f7219aa50c3bb2d10c019461356f8[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Thu May 7 15:18:08 2020 -0300
+
+    configurando banco de dados e primeira migration
+
+[33mcommit 6347e14f520c075aeabf71e07d8ca86e224aaefe[m
+Author: Guilherme Lima <guigui410@gmail.com>
+Date:   Tue May 5 12:49:43 2020 -0300
+
+    iniciando versionamento
