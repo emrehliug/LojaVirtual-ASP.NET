@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Categoria>
+﻿@model X.PagedList.IPagedList<Categoria>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -10,3 +11,4 @@
     @categoria.Nome<br />
 }
 
+@Html.PagedListPager((IPagedList)Model, pagina => Url.Action("Index", new { pagina}))

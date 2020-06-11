@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace LojaVirtual.Repositories.Interfaces
 {
@@ -12,6 +13,6 @@ namespace LojaVirtual.Repositories.Interfaces
         void Atualizar(Categoria categoria);
         void Excluir(int Id);
         Categoria ObterCategoria(int Id);
-        IEnumerable<Categoria> TodasCategorias();
+        IPagedList<Categoria> TodasCategorias(int? pagina);
     }
 }

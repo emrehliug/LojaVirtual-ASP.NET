@@ -20,10 +20,10 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
             categoriaRepository = _categoriaRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? pagina)
         {
-            IEnumerable<Categoria> ListaCategorias = categoriaRepository.TodasCategorias();
-            return View(ListaCategorias);
+            var categoriasPorPagina = categoriaRepository.TodasCategorias(pagina);
+            return View(categoriasPorPagina);
         }
 
         [HttpGet]
