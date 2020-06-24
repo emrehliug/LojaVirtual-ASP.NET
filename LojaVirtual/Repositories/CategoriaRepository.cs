@@ -43,6 +43,11 @@ namespace LojaVirtual.Repositories
             return banco.Categorias.Find(Id);
         }
 
+        public IEnumerable<Categoria> ObterTodasCategorias()
+        {
+            return banco.Categorias;
+        }
+
         IPagedList<Categoria> ICategoriaRepository.TodasCategorias(int? pagina)
         {
             int NumeroPagina = pagina ?? 1;
