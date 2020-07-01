@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using LojaVirtual.Libraries.Filtro;
@@ -40,7 +41,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
             {
                 categoriaRepository.Cadastrar(categoria);
 
-                TempData["MSG_S"] = "Categoria salva com sucesso!";
+                TempData["MSG_S"] = "Categoria cadastrada com sucesso!";
 
                 return RedirectToAction(nameof(Index));
             }
@@ -51,12 +52,24 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
         [HttpGet]
         public IActionResult Atualizar(int id)
         {
-            return View();
+            var categoria = categoriaRepository.ObterCategoria(id);
+            ViewBag.Categorias = categoriaRepository.ObterTodasCategorias().Where(a=> a.Id != id).Select(a => new SelectListItem(a.Nome, a.Id.ToString()));
+            return View(categoria);
         }
         [HttpPost]
-        public IActionResult Atualizar([FromForm]Categoria categoria)
+        public IActionResult Atualizar([FromForm] Categoria categoria, int id)
         {
-            //TODO Implementar Logica
+            if (ModelState.IsValid)
+            {
+                categoriaRepository.Atualizar(categoria);
+                
+                TempData["MSG_S"] = "Categoria atualizada com sucesso!";
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewBag.Categorias = categoriaRepository.ObterTodasCategorias().Where(a => a.Id != id).Select(a => new SelectListItem(a.Nome, a.Id.ToString()));
+
             return View();
         }
         [HttpGet]
