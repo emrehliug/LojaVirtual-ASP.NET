@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace LojaVirtual.Areas.Colaborador.Controllers
 {
     [Area("Colaborador")]
-    //[ColaboradorAutorizacao]
+    [ColaboradorAutorizacao]
     public class CategoriaController : Controller
     {
         private ICategoriaRepository categoriaRepository;

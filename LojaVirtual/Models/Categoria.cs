@@ -10,6 +10,7 @@ namespace LojaVirtual.Models
 {
     public class Categoria
     {
+        [Display(Name = "Código")]
         public int Id { get; set; }
         [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
         [MinLength(4, ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E002")]
@@ -23,6 +24,7 @@ namespace LojaVirtual.Models
         public int? CategoriaPaiId { get; set; }
 
         [ForeignKey("CategoriaPaiId")]
+        [Display(Name = "Categoria Pai")]
         public virtual Categoria CategoriaPai { get; set; }
     }
 }
