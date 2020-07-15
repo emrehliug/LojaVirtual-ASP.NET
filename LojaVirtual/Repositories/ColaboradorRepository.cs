@@ -1,20 +1,24 @@
 ﻿using LojaVirtual.Database;
 using LojaVirtual.Models;
 using LojaVirtual.Repositories.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace LojaVirtual.Repositories
 {
     public class ColaboradorRepository : IColaboradorRepository
     {
+        private IConfiguration conf;
         private LojaVirtualContext banco;
 
-        public ColaboradorRepository(LojaVirtualContext _banco)
+        public ColaboradorRepository(LojaVirtualContext _banco, IConfiguration configuration)
         {
             banco = _banco;
+            conf = configuration;
         }
         public void Atualizar(Colaborador colaborador)
         {
@@ -46,9 +50,11 @@ namespace LojaVirtual.Repositories
             return banco.Colaboradores.Find(Id);
         }
 
-        public IEnumerable<Colaborador> TodosColaboradores()
+        public IPagedList<Colaborador> ObterTodosColaboradores(int? pagina)
         {
-            return banco.Colaboradores.ToList();
+            int numeroPaginas = pagina ?? 1;
+            return banco.Colaboradores.Where(x => x.Tipo != "G").ToPagedList<Colaborador>(numeroPaginas, conf.GetValue<int>("RegistroPorPagina"));
         }
+
     }
 }

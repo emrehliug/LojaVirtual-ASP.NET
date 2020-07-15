@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LojaVirtual.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace LojaVirtual.Areas.Colaborador.Controllers
-{
+{  
+    [Area("Colaborador")]
     public class ColaboradorController : Controller
     {
-        public IActionResult Index()
+        private IColaboradorRepository colaboradorRepository;
+
+        public ColaboradorController(IColaboradorRepository repository)
         {
-            return View();
+            colaboradorRepository = repository;
+        }
+
+        public IActionResult Index(int? pagina)
+        {
+            IPagedList<Models.Colaborador> colaboradores = colaboradorRepository.ObterTodosColaboradores(pagina);
+            return View(colaboradores);
         }
 
         [HttpGet]
