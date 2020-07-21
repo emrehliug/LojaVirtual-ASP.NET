@@ -19,7 +19,7 @@
         <input asp-for="Email" class="form-control" placeholder="Digite o Email do Colaborador">
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
-    <div class="form-group">
+    @*<div class="form-group">
         <label asp-for="Senha"></label>
         <input asp-for="Senha" type="password" class="form-control" placeholder="Digite a nova senha">
         <span asp-validation-for="Senha" class="text-danger"></span>
@@ -28,6 +28,6 @@
         <label asp-for="ConfirmaSenha"></label>
         <input asp-for="ConfirmaSenha" type="password" class="form-control" placeholder="Confirme a nova senha">
         <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
-    </div>
+    </div>*@
     <button type="submit" class="btn btn-primary">Cadastrar</button>  <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </form>

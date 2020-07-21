@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LojaVirtual.Libraries.GeradorSenha;
 using LojaVirtual.Libraries.Lang;
 using LojaVirtual.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,16 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult GerarSenha(int id)
+        {
+            var colaborador = colaboradorRepository.ObterColaborador(id);
+            colaborador.Senha = GeradorDeSenha.ObterSenhaUnica(8);
+            colaboradorRepository.Atualizar(colaborador);
+            //TODO -- Enviar senha gerada para E-mail do colaborador
             return View();
         }
 
