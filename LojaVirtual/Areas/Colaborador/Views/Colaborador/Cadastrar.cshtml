@@ -1,0 +1,31 @@
+﻿@model Colaborador
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar colaboradors</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control" placeholder="Digite o nome do Colaborador">
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" placeholder="Digite o Email do Colaborador">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Senha"></label>
+        <input asp-for="Senha" class="form-control" placeholder="Digite a Senha">
+        <span asp-validation-for="Senha" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmaSenha"></label>
+        <input asp-for="ConfirmaSenha" class="form-control" placeholder="Digite novamente a senha">
+        <span asp-validation-for="ConfirmaSenha" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>  <a asp-action="Index" class="btn btn-primary">Voltar</a>
+</form>

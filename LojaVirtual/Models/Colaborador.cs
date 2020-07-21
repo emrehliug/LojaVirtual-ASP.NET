@@ -27,10 +27,11 @@ namespace LojaVirtual.Models
         public string Senha { get; set; }
 
         [NotMapped]
+        [Compare("Senha", ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E005")]
         public string ConfirmaSenha { get; set; }
         //prop tipo tem como objetivo definir C = Comum / G = Gerente 
 
-        [Required(ErrorMessageResourceType = typeof(Mensagem), ErrorMessageResourceName = "MSG_E001")]
+        
         public string Tipo { get; set; }
     }
 }
