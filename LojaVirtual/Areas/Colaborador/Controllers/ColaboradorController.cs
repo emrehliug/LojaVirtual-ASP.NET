@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LojaVirtual.Libraries.Email;
 using LojaVirtual.Libraries.GeradorSenha;
 using LojaVirtual.Libraries.Lang;
 using LojaVirtual.Repositories.Interfaces;
@@ -14,10 +15,12 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
     public class ColaboradorController : Controller
     {
         private IColaboradorRepository colaboradorRepository;
+        private GerenciarEmail GerenciarEmail;
 
-        public ColaboradorController(IColaboradorRepository repository)
+        public ColaboradorController(IColaboradorRepository repository, GerenciarEmail gerenciarEmail)
         {
             colaboradorRepository = repository;
+            GerenciarEmail = gerenciarEmail;
         }
 
         public IActionResult Index(int? pagina)
@@ -53,8 +56,12 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
             var colaborador = colaboradorRepository.ObterColaborador(id);
             colaborador.Senha = GeradorDeSenha.ObterSenhaUnica(8);
             colaboradorRepository.Atualizar(colaborador);
-            //TODO -- Enviar senha gerada para E-mail do colaborador
-            return View();
+
+            GerenciarEmail.EnviarSenhaNovaPorEmail(colaborador);
+
+            TempData["MSG_S"] = Mensagem.MSG_EMAILSENHA;
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]

@@ -124,6 +124,15 @@ namespace LojaVirtual.Libraries.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Senha gerara e enviada com sucesso!.
+        /// </summary>
+        public static string MSG_EMAILSENHA {
+            get {
+                return ResourceManager.GetString("MSG_EMAILSENHA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registro removido com sucesso!.
         /// </summary>
         public static string MSG_R001 {

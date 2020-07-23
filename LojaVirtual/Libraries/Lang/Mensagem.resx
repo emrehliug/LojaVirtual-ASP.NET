@@ -138,6 +138,9 @@
   <data name="MSG_E005" xml:space="preserve">
     <value>A Senhas não conferem, tente novamente!</value>
   </data>
+  <data name="MSG_EMAILSENHA" xml:space="preserve">
+    <value>Senha gerara e enviada com sucesso!</value>
+  </data>
   <data name="MSG_R001" xml:space="preserve">
     <value>Registro removido com sucesso!</value>
   </data>
