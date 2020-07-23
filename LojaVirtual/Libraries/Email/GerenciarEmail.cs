@@ -1,4 +1,5 @@
 ﻿using LojaVirtual.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +9,20 @@ using System.Threading.Tasks;
 
 namespace LojaVirtual.Libraries.Email
 {
-    public class ContatoEmail
+    public class GerenciarEmail
     {
-        public static void EnviarContatoPorEmail(Contato contato)
-        {
-            /*
-             * SMTP -> Servidor que vai enviar a mensagem.
-             */
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("elias.ribeiro.s@gmail.com", "");
-            smtp.EnableSsl = true;
+        private IConfiguration _configuration;
+        private SmtpClient _smtp;
 
+        public GerenciarEmail(SmtpClient smtp, IConfiguration configuration)
+        {
+            _smtp = smtp;
+            _configuration = configuration;
+        }
+
+        public void EnviarContatoPorEmail(Contato contato)
+        {
+         
             string corpoMsg = string.Format("<h2>Contato - LojaVirtual</h2>" +
                 "<b>Nome: </b> {0} <br />" +
                 "<b>E-mail: </b> {1} <br />" +
@@ -30,19 +33,18 @@ namespace LojaVirtual.Libraries.Email
                 contato.Texto
             );
 
-
             /*
              * MailMessage -> Construir a mensagem
              */
             MailMessage mensagem = new MailMessage();
-            mensagem.From = new MailAddress("elias.ribeiro.s@gmail.com");
-            mensagem.To.Add("elias.ribeiro.s@gmail.com");
+            mensagem.From = new MailAddress(_configuration.GetValue<string>("Email:UserName"));
+            mensagem.To.Add(_configuration.GetValue<string>("Email:UserName"));
             mensagem.Subject = "Contato - LojaVirtual - E-mail: " + contato.Email;
             mensagem.Body = corpoMsg;
             mensagem.IsBodyHtml = true;
 
             //Enviar Mensagem via SMTP
-            smtp.Send(mensagem);
+            _smtp.Send(mensagem);
         }
     }
 }
