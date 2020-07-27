@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LojaVirtual.Libraries.Email;
+﻿using LojaVirtual.Libraries.Email;
+using LojaVirtual.Libraries.Filtro;
 using LojaVirtual.Libraries.GeradorSenha;
 using LojaVirtual.Libraries.Lang;
 using LojaVirtual.Repositories.Interfaces;
@@ -12,6 +9,7 @@ using X.PagedList;
 namespace LojaVirtual.Areas.Colaborador.Controllers
 {  
     [Area("Colaborador")]
+    [ColaboradorAutorizacao("G")]
     public class ColaboradorController : Controller
     {
         private IColaboradorRepository colaboradorRepository;

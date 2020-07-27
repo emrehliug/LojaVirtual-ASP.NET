@@ -12,6 +12,13 @@ namespace LojaVirtual.Libraries.Filtro
     public class ColaboradorAutorizacaoAttribute : Attribute, IAuthorizationFilter
     {
         LoginColaborador login;
+        private string tipoColaborador;
+
+        public ColaboradorAutorizacaoAttribute(string TipoColaborador = "C")
+        {
+            tipoColaborador = TipoColaborador;
+        }
+
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             login = (LoginColaborador)context.HttpContext.RequestServices.GetService(typeof(LoginColaborador));
@@ -21,6 +28,13 @@ namespace LojaVirtual.Libraries.Filtro
             if (colaborador == null)
             {
                 context.Result = new RedirectToActionResult("Login","Home",null);
+            }
+            else
+            {
+                if(colaborador.Tipo == "C" && tipoColaborador == "G")
+                {
+                    context.Result = new ForbidResult();
+                }
             }
         }
     }
