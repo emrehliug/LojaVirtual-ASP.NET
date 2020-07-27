@@ -53,7 +53,7 @@ namespace LojaVirtual.Libraries.Email
                 "Foi solicitado e gerado uma nova senha para seu acesso ao Painel da Loja. <br />" +
                 "Sua nova senha é:" +
                 "<h3>{0}</h3>" +
-                "<br /> E-mail enviado automaticamente do site LojaVirtual.Para qualquer duvida, entre em contato com seu superior direto.",
+                "<br /> E-mail enviado automaticamente do site LojaVirtual.<br />Quaisquer duvida, entre em contato com seu superior direto.",
                 colaborador.Senha
             );
 
@@ -61,6 +61,28 @@ namespace LojaVirtual.Libraries.Email
             mensagem.From = new MailAddress(_configuration.GetValue<string>("Email:UserName"));
             mensagem.To.Add(colaborador.Email);
             mensagem.Subject = "Colaborador:"+ colaborador.Nome +" - LojaVirtual - Senha";
+            mensagem.Body = corpoMsg;
+            mensagem.IsBodyHtml = true;
+
+            //Enviar Mensagem via SMTP
+            _smtp.Send(mensagem);
+        }
+
+        public void EnviarSenhaNovoCadastro(Colaborador colaborador)
+        {
+            string corpoMsg = string.Format("<h2>Seja bem vindo Colaborador - LojaVirtual</h2>" +
+                "Você foi aceito e selecionado para fazer parte da nossa compania, foi gerado uma senha para seu acesso ao portal do Colaborador. <br />" +
+                "Utilize seu E-mail e senha para logar <br />" +
+                "Sua senha é:" +
+                "<h3>{0}</h3>" +
+                "<br /> E-mail enviado automaticamente do site LojaVirtual.<br />Quaisquer duvida, entre em contato com seu superior direto.",
+                colaborador.Senha
+            );
+
+            MailMessage mensagem = new MailMessage();
+            mensagem.From = new MailAddress(_configuration.GetValue<string>("Email:UserName"));
+            mensagem.To.Add(colaborador.Email);
+            mensagem.Subject = "Colaborador:" + colaborador.Nome + " - LojaVirtual - Senha";
             mensagem.Body = corpoMsg;
             mensagem.IsBodyHtml = true;
 

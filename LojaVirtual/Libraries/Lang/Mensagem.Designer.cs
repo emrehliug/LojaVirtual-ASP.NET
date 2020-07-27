@@ -124,7 +124,7 @@ namespace LojaVirtual.Libraries.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Senha gerara e enviada com sucesso!.
+        ///   Looks up a localized string similar to Senha gerada e enviada com sucesso!.
         /// </summary>
         public static string MSG_EMAILSENHA {
             get {

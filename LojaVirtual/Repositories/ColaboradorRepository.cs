@@ -23,6 +23,16 @@ namespace LojaVirtual.Repositories
         public void Atualizar(Colaborador colaborador)
         {
             banco.Update(colaborador);
+            banco.Entry(colaborador).Property(a => a.Senha).IsModified = false;
+            banco.SaveChanges();
+        }
+
+        public void AtualizarSenha(Colaborador colaborador)
+        {
+            banco.Update(colaborador);
+            banco.Entry(colaborador).Property(a => a.Nome).IsModified = false;
+            banco.Entry(colaborador).Property(a => a.Email).IsModified = false;
+            banco.Entry(colaborador).Property(a => a.Tipo).IsModified = false;
             banco.SaveChanges();
         }
 

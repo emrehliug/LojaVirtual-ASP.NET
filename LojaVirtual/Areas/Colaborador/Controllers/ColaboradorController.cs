@@ -38,10 +38,14 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
         [HttpPost]
         public IActionResult Cadastrar([FromForm]Models.Colaborador colaborador)
         {
+            ModelState.Remove("Senha");
             if (ModelState.IsValid)
             {
                 colaborador.Tipo = "C";
+                colaborador.Senha = GeradorDeSenha.ObterSenhaUnica(8);
                 colaboradorRepository.Cadastrar(colaborador);
+
+                GerenciarEmail.EnviarSenhaNovoCadastro(colaborador);
 
                 TempData["MSG_S"] = Mensagem.MSG_C001;
 
@@ -55,7 +59,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
         {
             var colaborador = colaboradorRepository.ObterColaborador(id);
             colaborador.Senha = GeradorDeSenha.ObterSenhaUnica(8);
-            colaboradorRepository.Atualizar(colaborador);
+            colaboradorRepository.AtualizarSenha(colaborador);
 
             GerenciarEmail.EnviarSenhaNovaPorEmail(colaborador);
 
@@ -74,6 +78,7 @@ namespace LojaVirtual.Areas.Colaborador.Controllers
         [HttpPost]
         public IActionResult Atualizar([FromForm] Models.Colaborador colaborador, int id)
         {
+            ModelState.Remove("Senha");
             if (ModelState.IsValid)
             {
                 colaboradorRepository.Atualizar(colaborador);
