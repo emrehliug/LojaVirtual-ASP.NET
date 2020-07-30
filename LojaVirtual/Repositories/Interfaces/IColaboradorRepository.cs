@@ -17,7 +17,8 @@ namespace LojaVirtual.Repositories.Interfaces
 
 
         Colaborador ObterColaborador(int Id);
-        
+
+        List<Colaborador> ObterColaboradorPorEmail(string email);
         IPagedList<Colaborador> ObterTodosColaboradores(int? pagina);
     }
 }
